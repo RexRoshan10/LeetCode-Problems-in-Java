@@ -1,3 +1,5 @@
+//This is not the complete solution as i was not able to figure out if the obstacle grid is [[0]]
+
 class Solution {
     public int uniquePathsWithObstacles(int[][] obstacleGrid) {
      int m=obstacleGrid.length;
