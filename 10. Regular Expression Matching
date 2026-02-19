@@ -1,0 +1,70 @@
+//This solution i could not solve all the test cases, the failed test case is s = "ab" and p = ".*c", only got 230 test cases passed of 350;
+//if anyone finds a way to optimize this code notify please
+
+
+
+
+class Solution {
+    public boolean isMatch(String s, String p) {
+        boolean answer=false;
+        if(s.length() > p.length())
+            return answer;
+
+        int i=0;int j=0;
+        while(i<s.length() && j<p.length())
+        {
+            if(s.charAt(i)==p.charAt(j))
+            {
+                answer=true;
+                i++;
+                j++;
+                continue;
+            }
+            if(p.charAt(j)=='.')
+            {
+                answer=true;
+                i++;
+                j++;
+                continue;
+            }
+            if(p.charAt(j)=='*')
+            {
+                answer=true;
+                j++;
+                i++;
+                continue;
+            }
+            else
+            {
+                j++;
+                answer=false;
+            }
+        }
+        
+        /*if(s.length()<p.length())
+            return answer;
+
+        for(int i=0;i<p.length();i++)
+        {
+            if(p.charAt(i)=='*')
+            {
+                answer=true;
+                continue;
+            }
+            else if(p.charAt(i)=='.')
+            {
+                answer=true;
+                continue;
+            }
+            else if(p.charAt(i)==s.charAt(i))
+            {
+                answer=true;
+                continue;
+            }
+            else
+                answer=false;
+        }*/
+        
+        return answer;
+    }
+}
