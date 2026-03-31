@@ -1,0 +1,30 @@
+class Solution {
+    public boolean canBeEqual(String s1, String s2) {
+        int i = 0;
+        char temp;
+        StringBuilder s11 = new StringBuilder(s1);
+        StringBuilder s22 = new StringBuilder(s2);
+
+        for(int j = 2; j < 4; j++) {
+            i = j - 2;
+
+            if(s11.toString().equals(s22.toString())) {
+                return true;
+            }
+
+            if(s11.charAt(i) == s22.charAt(i))
+                continue;
+
+            temp = s22.charAt(j);
+            s22.setCharAt(j, s22.charAt(i));
+            s22.setCharAt(i, temp);
+        }
+
+
+        if(s11.toString().equals(s22.toString())) {
+            return true;
+        }
+
+        return false;
+    }
+}
