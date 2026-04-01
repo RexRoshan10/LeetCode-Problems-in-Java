@@ -1,5 +1,5 @@
 //This solution i could not solve all the test cases, the failed test case is s = "ab" and p = ".*c", only got 230 test cases passed of 350;
-//if anyone finds a way to optimize this code notify please
+//if anyone finds a way to optimize this code notify please.
 
 
 
