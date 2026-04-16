@@ -1,0 +1,34 @@
+//not all test cases are passed getting time limit exceeded error at some point
+
+class Solution {
+    public List<Integer> solveQueries(int[] nums, int[] queries) {
+        List<Integer> answer = new ArrayList<>();
+        int n = nums.length;
+
+        for(int i : queries) {
+            int q = nums[i];
+            int count = 1;
+
+            int start = (i - 1 + n) % n;
+            int end = (i + 1) % n;
+
+            boolean found = false;
+
+            while(count <= n / 2) {
+                if(nums[start] == q || nums[end] == q) {
+                    answer.add(count);
+                    found = true;
+                    break;
+                }
+
+                start = (start - 1 + n) % n;
+                end = (end + 1) % n;
+                count++;
+            }
+
+            if(!found) answer.add(-1);
+        }
+
+        return answer;
+    }
+}
