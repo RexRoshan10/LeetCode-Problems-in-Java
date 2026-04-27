@@ -1,3 +1,5 @@
+//I use dfs.
+
 class Solution {
     int[][][] dirs = {
         {},
