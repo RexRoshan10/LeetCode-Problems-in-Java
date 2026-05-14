@@ -1,0 +1,20 @@
+import java.util.Arrays;
+
+class Solution {
+    public boolean isGood(int[] nums) {
+
+        Arrays.sort(nums);
+
+        int n = nums.length;
+
+        // first n-1 elements should be 1,2,3...
+        for(int i = 0; i < n-1; i++) {
+
+            if(nums[i] != i+1)
+                return false;
+        }
+
+        // last element should equal n-1
+        return nums[n-1] == n-1;
+    }
+}
