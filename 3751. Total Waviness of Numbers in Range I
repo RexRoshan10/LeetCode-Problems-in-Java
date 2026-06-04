@@ -1,0 +1,25 @@
+class Solution {
+    public int totalWaviness(int num1, int num2) {
+        
+        int totalwaviness=0;
+        for(int i=num1;i<num2+1;i++)
+        {
+            if(i<100)
+                continue;
+            String num= Integer.toString(i);
+            char numarray[]=num.toCharArray();
+            for(int j=1;j<numarray.length-1;j++)
+            {
+                int left=Character.getNumericValue(numarray[j-1]);
+                int right=Character.getNumericValue(numarray[j+1]);
+                int val=Character.getNumericValue(numarray[j]);
+
+                if(val>left & val >right)
+                    totalwaviness++;
+                if(val<left & val < right)
+                    totalwaviness++;
+            }
+        }
+        return totalwaviness;
+    }
+}
