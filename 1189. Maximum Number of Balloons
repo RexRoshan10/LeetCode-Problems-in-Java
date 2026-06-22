@@ -1,0 +1,31 @@
+class Solution {
+    public int maxNumberOfBalloons(String text) {
+        HashMap<Character,Integer> dict=new HashMap<Character,Integer>();
+        dict.put('b',0);
+        dict.put('a',0);
+        dict.put('l',0);
+        dict.put('o',0);
+        dict.put('n',0);
+        String str=text.toLowerCase();
+        for(int i=0;i<str.length();i++)
+        {
+            char k = text.charAt(i);
+
+            if(dict.containsKey(k))
+            {
+                dict.put(k, dict.get(k) + 1);
+            }
+        }
+        dict.put('l',dict.get('l')/2);
+        dict.put('o',dict.get('o')/2);
+
+    int minValue = Integer.MAX_VALUE;
+
+    for (int value : dict.values()) {
+        if (value < minValue) {
+            minValue = value;
+        }
+    }
+    return minValue;
+    }
+}
