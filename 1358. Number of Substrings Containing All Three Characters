@@ -1,0 +1,23 @@
+class Solution {
+    public int numberOfSubstrings(String s) {
+        int count = 0;
+        int n = s.length();
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 3; j <= n; j++) {
+
+                String str = s.substring(i, j);
+
+                if (str.contains("a") &&
+                    str.contains("b") &&
+                    str.contains("c")) {
+
+                    count += n - j + 1;
+                    break;
+                }
+            }
+        }
+
+        return count;
+    }
+}
