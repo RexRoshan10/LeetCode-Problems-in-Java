@@ -1,0 +1,37 @@
+class Solution {
+    public int minimumPushes(String word) {
+        ArrayList<Character> list=new ArrayList<Character>();
+        for(char c:word.toCharArray())
+        {
+            if(list.contains(c))
+                continue;
+            else
+                list.add(c);
+        }
+        int size=list.size();
+        int answer=8;
+        if(size<9)
+            return size;
+        else
+        {
+            size-=8;
+            if(size<9)
+            {
+                return answer+size*2;
+            }
+    
+            else{
+                answer=answer+8*2;
+                size-=8;
+                if(size<9)
+                    return answer+size*3;
+                else
+                    {
+                        answer=answer+8*3;
+                        size-=8;
+                        return answer+size*4;
+                    }
+            }
+        }
+    }
+}
