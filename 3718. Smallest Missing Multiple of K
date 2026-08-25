@@ -1,0 +1,18 @@
+class Solution {
+    public int missingMultiple(int[] nums, int k) {
+        List<Integer> list=new ArrayList<Integer>();
+        for(int i=0;i<nums.length;i++)
+        {
+            list.add(nums[i]);
+        }
+        int smallest=0;
+        int j=1;
+        while(true)
+        {
+            if(list.contains(j*k))
+                j++;
+            else
+                return j*k;
+        }
+    }
+}
