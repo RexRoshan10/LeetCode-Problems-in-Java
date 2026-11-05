@@ -1,0 +1,19 @@
+class Solution {
+    public int findTheDistanceValue(int[] arr1, int[] arr2, int d) {
+        int answer=0;
+        outerloop:
+        for( int i:arr1)
+        {
+            int val;
+            for(int j:arr2)
+            {
+                if(Math.abs(i-j) <=d)
+                    continue outerloop;
+
+            }
+            answer++;
+        }
+
+        return answer;
+    }
+}
