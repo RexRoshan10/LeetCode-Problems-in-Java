@@ -1,0 +1,80 @@
+
+import java.util.*;
+
+class Solution {
+    public int[] countServers(int n, int[][] logs, int x, int[] queries) {
+
+        int m = queries.length;
+        int[] ans = new int[m];
+
+        // Step 1: Sort logs by time
+        Arrays.sort(logs, (a, b) -> Integer.compare(a[1], b[1]));
+
+        // Step 2: Store query indices and sort them by query value
+        Integer[] order = new Integer[m];
+
+        for (int i = 0; i < m; i++) {
+            order[i] = i;
+        }
+
+        Arrays.sort(order, (a, b) ->
+            Integer.compare(queries[a], queries[b])
+        );
+
+        // Step 3: Maintain active server frequencies
+        HashMap<Integer, Integer> map = new HashMap<>();
+
+        int left = 0;
+        int right = 0;
+        int activeServers = 0;
+
+        // Step 4: Process queries in sorted order
+        for (int idx : order) {
+
+            int q = queries[idx];
+
+            int lower = q - x;
+            int upper = q;
+
+            // Add logs whose time is <= upper
+            while (right < logs.length &&
+                   logs[right][1] <= upper) {
+
+                int server = logs[right][0];
+
+                int freq = map.getOrDefault(server, 0);
+
+                if (freq == 0) {
+                    activeServers++;
+                }
+
+                map.put(server, freq + 1);
+
+                right++;
+            }
+
+            // Remove logs whose time is < lower
+            while (left < right &&
+                   logs[left][1] < lower) {
+
+                int server = logs[left][0];
+
+                int freq = map.get(server);
+
+                if (freq == 1) {
+                    map.remove(server);
+                    activeServers--;
+                } else {
+                    map.put(server, freq - 1);
+                }
+
+                left++;
+            }
+
+            // Store answer at original query index
+            ans[idx] = n - activeServers;
+        }
+
+        return ans;
+    }
+}
