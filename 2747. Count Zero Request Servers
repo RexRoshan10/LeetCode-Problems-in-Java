@@ -1,13 +1,10 @@
-
-import java.util.*;
-
 class Solution {
     public int[] countServers(int n, int[][] logs, int x, int[] queries) {
 
         int m = queries.length;
         int[] ans = new int[m];
 
-        // Step 1: Sort logs by time
+        
         Arrays.sort(logs, (a, b) -> Integer.compare(a[1], b[1]));
 
         // Step 2: Store query indices and sort them by query value
