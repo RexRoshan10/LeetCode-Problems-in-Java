@@ -7,7 +7,7 @@ class Solution {
         
         Arrays.sort(logs, (a, b) -> Integer.compare(a[1], b[1]));
 
-        // Step 2: Store query indices and sort them by query value
+
         Integer[] order = new Integer[m];
 
         for (int i = 0; i < m; i++) {
@@ -18,14 +18,14 @@ class Solution {
             Integer.compare(queries[a], queries[b])
         );
 
-        // Step 3: Maintain active server frequencies
+
         HashMap<Integer, Integer> map = new HashMap<>();
 
         int left = 0;
         int right = 0;
         int activeServers = 0;
 
-        // Step 4: Process queries in sorted order
+
         for (int idx : order) {
 
             int q = queries[idx];
@@ -33,7 +33,7 @@ class Solution {
             int lower = q - x;
             int upper = q;
 
-            // Add logs whose time is <= upper
+
             while (right < logs.length &&
                    logs[right][1] <= upper) {
 
@@ -50,7 +50,7 @@ class Solution {
                 right++;
             }
 
-            // Remove logs whose time is < lower
+
             while (left < right &&
                    logs[left][1] < lower) {
 
@@ -68,7 +68,7 @@ class Solution {
                 left++;
             }
 
-            // Store answer at original query index
+
             ans[idx] = n - activeServers;
         }
 
