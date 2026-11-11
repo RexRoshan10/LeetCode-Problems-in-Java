@@ -1,0 +1,23 @@
+class Solution {
+    public long minimumCost(int cost1, int cost2, int costBoth,
+                            int need1, int need2) {
+
+        long option1 = (long) cost1 * need1
+                     + (long) cost2 * need2;
+
+        long smallest = Math.min(need1, need2);
+        long largest = Math.max(need1, need2);
+
+        long option2 = (long) costBoth * smallest;
+
+        if (need1 > need2) {
+            option2 += (long) cost1 * (need1 - need2);
+        } else {
+            option2 += (long) cost2 * (need2 - need1);
+        }
+
+        long option3 = (long) costBoth * largest;
+
+        return Math.min(option1, Math.min(option2, option3));
+    }
+}
